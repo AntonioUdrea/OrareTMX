@@ -7,23 +7,40 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  
   <header>
-    <h1>Orare Autobuze Transmixt Bistrita</h1>
-    <select id="lineSelect"></select>
-  </header>
+  <h1>City Timetable Viewer</h1>
+</header>
 
-  <main>
-    <h2 id="lineTitle"></h2>
+<main>
+  <!-- Line-based timetable -->
+  <section>
+    <label for="lineSelect">Select a Line:</label>
+    <select id="lineSelect">
+      <option value="">Select a line</option>
+    </select>
+    <h2 id="lineTitle">Timetable by Line</h2>
     <table id="timetable">
       <thead>
         <tr>
-          <th>Ora</th>
-          <th>Masina</th>
+          <th>Time</th>
+          <th>Vehicle</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-  </main>
+  </section>
+
+  <br><hr><br>
+
+  <!-- Vehicle-based timetable -->
+  <section>
+    <label for="vehicleSelect">Select a Vehicle:</label>
+    <select id="vehicleSelect">
+      <option value="">Select a vehicle</option>
+    </select>
+    <div id="vehicleSchedule"></div>
+  </section>
 
   <script src="script.js"></script>
 </body>
