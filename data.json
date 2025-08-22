@@ -222,7 +222,7 @@
     { "time": "19:00", "vehicle": "BN 42 TMX" },
     { "time": "19:30", "vehicle": "BN 57 TMX" },
     { "time": "20:00", "vehicle": "BN 42 TMX" }
-  ]
+  ],
   "13 ODOBESCU - SUBCETATE ANL": [
     { "time": "06:00", "vehicle": "BN 62 TMX" },
     { "time": "06:15", "vehicle": "BN 74 TMX" },
@@ -282,5 +282,6 @@
     { "time": "21:30", "vehicle": "BN 59 TMX" }
   ]
 }
+
 
 
