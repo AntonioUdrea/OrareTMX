@@ -1,12 +1,17 @@
 {
-  "Line 1": [
-    { "time": "08:00", "vehicle": "Bus #2457" },
-    { "time": "08:30", "vehicle": "Bus #2461" },
-    { "time": "09:00", "vehicle": "Bus #2465" }
+  "8 DISPECERAT - SIGMIR": [
+    { "time": "07:00", "vehicle": "BN 42 TMX" },
+    { "time": "07:30", "vehicle": "BN 57 TMX" },
+    { "time": "08:00", "vehicle": "BN 42 TMX" },
+    { "time": "08:30", "vehicle": "BN 57 TMX" },
+    { "time": "09:00", "vehicle": "BN 42 TMX" },
+    { "time": "09:30", "vehicle": "BN 57 TMX" },
+    { "time": "10:00", "vehicle": "BN 42 TMX" },
+    { "time": "10:30", "vehicle": "BN 57 TMX" },
+    { "time": "12:00", "vehicle": "BN 42 TMX" }
   ],
-  "Line 2": [
-    { "time": "08:15", "vehicle": "Tram #102" },
-    { "time": "08:45", "vehicle": "Tram #108" },
-    { "time": "09:15", "vehicle": "Tram #115" }
+  "8 SIGMIR - DISPECERAT": [
+    { "time": "06:00", "vehicle": "BN 42 TMX" },
+    { "time": "06:30", "vehicle": "BN 57 TMX" }
   ]
 }
