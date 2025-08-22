@@ -1,14 +1,31 @@
 {
+  "Choose a line": [
+    { "time": "TIME", "vehicle": "Vehicle" }
+  ],
   "8 DISPECERAT - SIGMIR": [
-    { "time": "07:00", "vehicle": "BN 42 TMX" },
-    { "time": "07:30", "vehicle": "BN 57 TMX" },
-    { "time": "08:00", "vehicle": "BN 42 TMX" },
-    { "time": "08:30", "vehicle": "BN 57 TMX" },
-    { "time": "09:00", "vehicle": "BN 42 TMX" },
-    { "time": "09:30", "vehicle": "BN 57 TMX" },
-    { "time": "10:00", "vehicle": "BN 42 TMX" },
-    { "time": "10:30", "vehicle": "BN 57 TMX" },
-    { "time": "12:00", "vehicle": "BN 42 TMX" }
+    { "time": "07:00", "vehicle": "BN 57 TMX" },
+    { "time": "07:30", "vehicle": "BN 42 TMX" },
+    { "time": "08:00", "vehicle": "BN 57 TMX" },
+    { "time": "08:30", "vehicle": "BN 42 TMX" },
+    { "time": "09:00", "vehicle": "BN 57 TMX" },
+    { "time": "09:30", "vehicle": "BN 42 TMX" },
+    { "time": "10:00", "vehicle": "BN 57 TMX" },
+    { "time": "10:30", "vehicle": "BN 42 TMX" },
+    { "time": "12:00", "vehicle": "BN 57 TMX" },
+    { "time": "12:30", "vehicle": "BN 42 TMX" },
+    { "time": "13:00", "vehicle": "BN 57 TMX" },
+    { "time": "13:30", "vehicle": "BN 42 TMX" },
+    { "time": "14:00", "vehicle": "BN 57 TMX" },
+    { "time": "14:30", "vehicle": "BN 42 TMX" },
+    { "time": "15:00", "vehicle": "BN 57 TMX" },
+    { "time": "16:00", "vehicle": "BN 57 TMX" },
+    { "time": "16:30", "vehicle": "BN 42 TMX" },
+    { "time": "17:00", "vehicle": "BN 57 TMX" },
+    { "time": "17:30", "vehicle": "BN 42 TMX" },
+    { "time": "18:00", "vehicle": "BN 57 TMX" },
+    { "time": "18:30", "vehicle": "BN 42 TMX" },
+    { "time": "19:00", "vehicle": "BN 57 TMX" },
+    { "time": "19:30", "vehicle": "BN 42 TMX" }
   ],
   "8 SIGMIR - DISPECERAT": [
     { "time": "06:00", "vehicle": "BN 42 TMX" },
