@@ -62,33 +62,34 @@ function populateVehicles(linesData) {
     showVehicleSchedule(vehicleData, select.value);
   });
 }
+function populateVehicles(linesData) {
+  const vehicleData = {};
 
-function showVehicleSchedule(vehicleData, vehicle) {
-  const container = document.getElementById("vehicleSchedule");
-  container.innerHTML = "";
+  // Transform linesData → vehicleData
+  for (const line in linesData) {
+    linesData[line].forEach(entry => {
+      if (!vehicleData[entry.vehicle]) vehicleData[entry.vehicle] = [];
+      vehicleData[entry.vehicle].push({ time: entry.time, line });
+    });
+  }
 
-  if (!vehicle) return;
+  const select = document.getElementById("vehicleSelect");
 
-  const title = document.createElement("h2");
-  title.textContent = `Orar pentru ${vehicle}`;
-  container.appendChild(title);
+  // Sort vehicle names alphabetically
+  const sortedVehicles = Object.keys(vehicleData).sort((a, b) => a.localeCompare(b));
 
-  // Sort the schedule by time
-  const sortedSchedule = vehicleData[vehicle].slice().sort((a, b) => {
-    const [h1, m1] = a.time.split(":").map(Number);
-    const [h2, m2] = b.time.split(":").map(Number);
-    return h1 - h2 || m1 - m2;
+  sortedVehicles.forEach(vehicle => {
+    const option = document.createElement("option");
+    option.value = vehicle;
+    option.textContent = vehicle;
+    select.appendChild(option);
   });
 
-  const list = document.createElement("ul");
-  sortedSchedule.forEach(entry => {
-    const li = document.createElement("li");
-    li.textContent = `${entry.time} ${entry.line}`;
-    list.appendChild(li);
+  select.addEventListener("change", () => {
+    showVehicleSchedule(vehicleData, select.value);
   });
-
-  container.appendChild(list);
 }
 
 // Init
 loadData();
+
