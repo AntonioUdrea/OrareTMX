@@ -199,11 +199,9 @@
     { "time": "23:05", "vehicle": "BN 73 TMX" }
   ],
   "6 DISPECERAT - TARPIULUI": [
-    { "time": "06:20", "vehicle": "BN 07 TMX" },
-    { "time": "06:25", "vehicle": "BN 73 TMX" },
-    { "time": "14:20", "vehicle": "BN 07 TMX" },
-    { "time": "14:25", "vehicle": "BN 73 TMX" },
-    { "time": "22:20", "vehicle": "BN 07 TMX" }
+    { "time": "06:20", "vehicle": "BN 20 TMX" },
+    { "time": "14:20", "vehicle": "BN 20 TMX" },
+    { "time": "22:20", "vehicle": "BN 20 TMX" }
   ],
   "8 DISPECERAT - SIGMIR": [
     { "time": "07:00", "vehicle": "BN 57 TMX" },
