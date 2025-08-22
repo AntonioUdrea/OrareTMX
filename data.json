@@ -1,7 +1,4 @@
 {
-  "Choose a line": [
-    { "time": "TIME", "vehicle": "Vehicle" }
-  ],
   "1 MOISAN - STEFAN CEL MARE (SAPT 1)": [
     { "time": "05:30", "vehicle": "B 165 TMX" },
     { "time": "05:45", "vehicle": "B 108 TMX" },
@@ -227,3 +224,4 @@
     { "time": "20:00", "vehicle": "BN 42 TMX" }
   ]
 }
+
