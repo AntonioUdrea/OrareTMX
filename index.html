@@ -9,22 +9,22 @@
 <body>
   
   <header>
-  <h1>City Timetable Viewer</h1>
+  <h1>Orare Autobuze Transmixt Bistrita</h1>
 </header>
 
 <main>
   <!-- Line-based timetable -->
   <section>
-    <label for="lineSelect">Select a Line:</label>
+    <label for="lineSelect">Selectati traseul</label>
     <select id="lineSelect">
-      <option value="">Select a line</option>
+      <option value="">Selectati traseul</option>
     </select>
-    <h2 id="lineTitle">Timetable by Line</h2>
+    <h2 id="lineTitle"></h2>
     <table id="timetable">
       <thead>
         <tr>
-          <th>Time</th>
-          <th>Vehicle</th>
+          <th>Ora</th>
+          <th>Masina</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -35,9 +35,9 @@
 
   <!-- Vehicle-based timetable -->
   <section>
-    <label for="vehicleSelect">Select a Vehicle:</label>
+    <label for="vehicleSelect">Selectati masina</label>
     <select id="vehicleSelect">
-      <option value="">Select a vehicle</option>
+      <option value="">Selectati masina</option>
     </select>
     <div id="vehicleSchedule"></div>
   </section>
