@@ -1,0 +1,12 @@
+{
+  "Line 1": [
+    { "time": "08:00", "vehicle": "Bus #2457" },
+    { "time": "08:30", "vehicle": "Bus #2461" },
+    { "time": "09:00", "vehicle": "Bus #2465" }
+  ],
+  "Line 2": [
+    { "time": "08:15", "vehicle": "Tram #102" },
+    { "time": "08:45", "vehicle": "Tram #108" },
+    { "time": "09:15", "vehicle": "Tram #115" }
+  ]
+}
