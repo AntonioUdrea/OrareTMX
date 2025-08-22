@@ -24,7 +24,7 @@ function populateLines(data) {
 
 function showLineTimetable(data, line) {
   const title = document.getElementById("lineTitle");
-  title.textContent = line ? `Line ${line}` : "Timetable by Line";
+  title.textContent = line ? `Line ${line}` : "";
 
   const tbody = document.querySelector("#timetable tbody");
   tbody.innerHTML = "";
@@ -70,7 +70,7 @@ function showVehicleSchedule(vehicleData, vehicle) {
   if (!vehicle) return;
 
   const title = document.createElement("h2");
-  title.textContent = `${vehicle} Schedule`;
+  title.textContent = `Orar pentru ${vehicle}`;
   container.appendChild(title);
 
   // Sort the schedule by time
