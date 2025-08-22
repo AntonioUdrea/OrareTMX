@@ -75,7 +75,7 @@ function showVehicleSchedule(vehicleData, vehicle) {
   if (!vehicle || !vehicleData[vehicle]) return;
 
   const title = document.createElement("h2");
-  title.textContent = `${vehicle} Schedule`;
+  title.textContent = `Program pentru ${vehicle}`;
   container.appendChild(title);
 
   // Sort the schedule by time
@@ -88,7 +88,7 @@ function showVehicleSchedule(vehicleData, vehicle) {
   const list = document.createElement("ul");
   sortedSchedule.forEach(entry => {
     const li = document.createElement("li");
-    li.textContent = `${entry.time} → ${entry.line}`;
+    li.textContent = `${entry.time} ${entry.line}`;
     list.appendChild(li);
   });
 
@@ -97,3 +97,4 @@ function showVehicleSchedule(vehicleData, vehicle) {
 
 // Init
 loadData();
+
