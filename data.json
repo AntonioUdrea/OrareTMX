@@ -192,7 +192,7 @@
   ],
   "6 TARPIULUI - DISPECERAT": [
     { "time": "07:05", "vehicle": "BN 20 TMX" },
-    { "time": "15:05", "vehicle": "BN 62 TNR" },
+    { "time": "15:05", "vehicle": "BN 20 TMX" },
     { "time": "15:40", "vehicle": "BN 20 TMX" },
     { "time": "23:05", "vehicle": "BN 20 TMX" }
   ],
@@ -323,16 +323,36 @@
     { "time": "15:45", "vehicle": "BN 39 TMX" },
     { "time": "23:45", "vehicle": "BN 39 TMX" }
   ],
+  "11A TARPIULUI - INFOEL": [
+    { "time": "07:15", "vehicle": "BN 62 TNR" }
+  ],
   "11B GHINDA - LEONI": [
     { "time": "06:10", "vehicle": "BN 37 TMX" },
     { "time": "14:20", "vehicle": "BN 37 TMX" },
     { "time": "22:30", "vehicle": "BN 37 TMX" }
   ],
   "11B LEONI - GHINDA": [
-    { "time": "06:30", "vehicle": "BN 39 TMX" },
-    { "time": "07:30", "vehicle": "BN 39 TMX" },
     { "time": "15:45", "vehicle": "BN 39 TMX" },
     { "time": "23:45", "vehicle": "BN 37 TMX" }
+  ],
+  "12 DISPECERAT - LEONI": [
+    { "time": "06:20", "vehicle": "BN 42 TMX" },
+    { "time": "06:25", "vehicle": "BN 31 TMX" },
+    { "time": "07:30", "vehicle": "BN 53 TMX" },
+    { "time": "14:20", "vehicle": "BN 53 TMX" },
+    { "time": "22:55", "vehicle": "BN 53 TMX" }
+  ],
+  "12 LEONI - DISPECERAT": [
+    { "time": "07:10", "vehicle": "BN 53 TMX" },
+    { "time": "15:45", "vehicle": "BN 53 TMX" },
+    { "time": "16:30", "vehicle": "BN 53 TMX" },
+    { "time": "23:45", "vehicle": "BN 53 TMX" }
+  ],
+  "12B VIISOARA - LEONI": [
+    { "time": "06:10", "vehicle": "BN 31 TMX" }
+  ],
+  "12B LEONI - VIISOARA": [
+    { "time": "15:30", "vehicle": "BN 42 TMX" }
   ],
   "13 ODOBESCU - SUBCETATE ANL": [
     { "time": "06:00", "vehicle": "BN 62 TMX" },
