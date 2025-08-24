@@ -170,38 +170,49 @@
     { "time": "22:00", "vehicle": "B 01 TMX" },
     { "time": "22:30", "vehicle": "B 108 TMX" }
   ],
-  "5 CR VIVU - ROMBAT (L/M/V)": [
+  "5 CR VIVU - ROMBAT": [
     { "time": "06:20", "vehicle": "BN 07 TMX" },
     { "time": "06:25", "vehicle": "BN 73 TMX" },
     { "time": "14:20", "vehicle": "BN 07 TMX" },
     { "time": "14:25", "vehicle": "BN 73 TMX" },
     { "time": "22:20", "vehicle": "BN 07 TMX" }
   ],
-  "5 CR VIVU - ROMBAT (M/J)": [
-    { "time": "06:20", "vehicle": "BN 73 TMX" },
-    { "time": "06:25", "vehicle": "BN 07 TMX" },
-    { "time": "14:20", "vehicle": "BN 73 TMX" },
-    { "time": "14:25", "vehicle": "BN 07 TMX" },
-    { "time": "22:20", "vehicle": "BN 73 TMX" }
-  ],
-  "5 ROMBAT - CR VIVU (L/M/V)": [
+  "5 ROMBAT - CR VIVU": [
     { "time": "07:10", "vehicle": "BN 07 TMX" },
     { "time": "15:05", "vehicle": "BN 07 TMX" },
     { "time": "15:10", "vehicle": "BN 73 TMX" },
     { "time": "15:40", "vehicle": "BN 07 TMX" },
     { "time": "23:05", "vehicle": "BN 07 TMX" }
   ],
-  "5 ROMBAT - CR VIVU (M/J)": [
-    { "time": "07:10", "vehicle": "BN 73 TMX" },
-    { "time": "15:05", "vehicle": "BN 73 TMX" },
-    { "time": "15:10", "vehicle": "BN 07 TMX" },
-    { "time": "15:40", "vehicle": "BN 73 TMX" },
-    { "time": "23:05", "vehicle": "BN 73 TMX" }
-  ],
   "6 DISPECERAT - TARPIULUI": [
     { "time": "06:20", "vehicle": "BN 20 TMX" },
+    { "time": "07:00", "vehicle": "BN 62 TNR" },
     { "time": "14:20", "vehicle": "BN 20 TMX" },
     { "time": "22:20", "vehicle": "BN 20 TMX" }
+  ],
+  "6 TARPIULUI - DISPECERAT": [
+    { "time": "07:05", "vehicle": "BN 20 TMX" },
+    { "time": "15:05", "vehicle": "BN 62 TNR" },
+    { "time": "15:40", "vehicle": "BN 20 TMX" },
+    { "time": "23:05", "vehicle": "BN 20 TMX" }
+  ],
+  "7 DISPECERAT - SLATINITA": [
+    { "time": "05:30", "vehicle": "BN 56 TMX" },
+    { "time": "06:20", "vehicle": "BN 56 TMX" },
+    { "time": "07:30", "vehicle": "BN 56 TMX" },
+    { "time": "12:15", "vehicle": "BN 56 TMX" },
+    { "time": "14:30", "vehicle": "BN 56 TMX" },
+    { "time": "16:00", "vehicle": "BN 56 TMX" },
+    { "time": "19:30", "vehicle": "BN 56 TMX" }
+  ],
+  "7 SLATINITA - DISPECERAT": [
+    { "time": "05:45", "vehicle": "BN 56 TMX" },
+    { "time": "06:45", "vehicle": "BN 56 TMX" },
+    { "time": "08:10", "vehicle": "BN 56 TMX" },
+    { "time": "13:00", "vehicle": "BN 56 TMX" },
+    { "time": "15:00", "vehicle": "BN 56 TMX" },
+    { "time": "16:45", "vehicle": "BN 56 TMX" },
+    { "time": "20:00", "vehicle": "BN 56 TMX" }
   ],
   "8 DISPECERAT - SIGMIR": [
     { "time": "07:00", "vehicle": "BN 57 TMX" },
@@ -255,6 +266,73 @@
     { "time": "19:00", "vehicle": "BN 42 TMX" },
     { "time": "19:30", "vehicle": "BN 57 TMX" },
     { "time": "20:00", "vehicle": "BN 42 TMX" }
+  ],
+  "9 DISPECERAT - GHINDA": [
+    { "time": "05:45", "vehicle": "BN 70 TMX" },
+    { "time": "06:45", "vehicle": "BN 70 TMX" },
+    { "time": "07:45", "vehicle": "BN 70 TMX" },
+    { "time": "11:30", "vehicle": "BN 67 TMX" },
+    { "time": "13:20", "vehicle": "BN 70 TMX" },
+    { "time": "15:00", "vehicle": "BN 70 TMX" },
+    { "time": "16:10", "vehicle": "BN 70 TMX" },
+    { "time": "19:30", "vehicle": "BN 67 TMX" }
+  ],
+  "9 GHINDA - DISPECERAT": [
+    { "time": "06:10", "vehicle": "BN 70 TMX" },
+    { "time": "07:10", "vehicle": "BN 70 TMX" },
+    { "time": "08:20", "vehicle": "BN 70 TMX" },
+    { "time": "12:00", "vehicle": "BN 67 TMX" },
+    { "time": "13:55", "vehicle": "BN 70 TMX" },
+    { "time": "15:30", "vehicle": "BN 70 TMX" },
+    { "time": "16:55", "vehicle": "BN 70 TMX" },
+    { "time": "19:50", "vehicle": "BN 67 TMX" }
+  ],
+  "10 DISPECERAT - SARATA": [
+    { "time": "06:40", "vehicle": "BN 10 TMX" },
+    { "time": "07:40", "vehicle": "BN 10 TMX" },
+    { "time": "10:00", "vehicle": "BN 10 TMX" },
+    { "time": "11:30", "vehicle": "BN 10 TMX" },
+    { "time": "13:10", "vehicle": "BN 10 TMX" },
+    { "time": "14:20", "vehicle": "BN 10 TMX" },
+    { "time": "15:30", "vehicle": "BN 10 TMX" },
+    { "time": "16:40", "vehicle": "BN 10 TMX" },
+    { "time": "17:50", "vehicle": "BN 10 TMX" },
+    { "time": "19:30", "vehicle": "BN 84 TMX" }
+  ],
+  "10 SARATA - DISPECERAT": [
+    { "time": "06:10", "vehicle": "BN 10 TMX" },
+    { "time": "07:10", "vehicle": "BN 10 TMX" },
+    { "time": "10:30", "vehicle": "BN 10 TMX" },
+    { "time": "12:10", "vehicle": "BN 10 TMX" },
+    { "time": "13:45", "vehicle": "BN 10 TMX" },
+    { "time": "14:55", "vehicle": "BN 10 TMX" },
+    { "time": "16:00", "vehicle": "BN 10 TMX" },
+    { "time": "17:15", "vehicle": "BN 10 TMX" },
+    { "time": "18:25", "vehicle": "BN 10 TMX" },
+    { "time": "20:00", "vehicle": "BN 84 TMX" }
+  ],
+  "11 CR VIVU - LEONI": [
+    { "time": "06:10", "vehicle": "BN 39 TMX" },
+    { "time": "07:15", "vehicle": "BN 39 TMX" },
+    { "time": "14:30", "vehicle": "BN 39 TMX" },
+    { "time": "22:40", "vehicle": "BN 37 TMX" }
+  ],
+  "11 LEONI - CR VIVU": [
+    { "time": "06:30", "vehicle": "BN 39 TMX" },
+    { "time": "07:30", "vehicle": "BN 39 TMX" },
+    { "time": "15:45", "vehicle": "BN 39 TMX" },
+    { "time": "23:45", "vehicle": "BN 39 TMX" }
+  ],
+  "11B GHINDA - LEONI": [
+    { "time": "06:10", "vehicle": "BN 37 TMX" },
+    { "time": "14:20", "vehicle": "BN 37 TMX" },
+    { "time": "22:30", "vehicle": "BN 37 TMX" }
+  ],
+  "11B LEONI - GHINDA": [
+    { "time": "06:30", "vehicle": "BN 39 TMX" },
+    { "time": "07:30", "vehicle": "BN 39 TMX" },
+    { "time": "15:45", "vehicle": "BN 39 TMX" },
+    { "time": "23:45", "vehicle": "BN 37 TMX" }
   ],
   "13 ODOBESCU - SUBCETATE ANL": [
     { "time": "06:00", "vehicle": "BN 62 TMX" },
@@ -373,3 +451,4 @@
     { "time": "21:30", "vehicle": "BN 62 TMX" }
   ]
 }
+
