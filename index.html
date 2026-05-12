@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orare TMX</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --border: #d6d0c4;
+      --text: #1a1814;
+      --muted: #7a7468;
+      --accent: #000000;
+      --accent-light: #f5f5f5;
+      --sans: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+
+    header {
+      max-width: 820px;
+      margin: 0 auto 32px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-family: var(--sans);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    header span {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── LINE SELECTOR ── */
+    .line-selector {
+      max-width: 820px;
+      margin: 0 auto 40px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .line-btn {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .line-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .line-btn.active {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* ── WEEK SCHEDULE ── */
+    .week-block {
+      max-width: 820px;
+      margin: 0 auto 52px;
+    }
+
+    .week-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .week-tag {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      background: var(--text);
+      color: var(--bg);
+      padding: 3px 8px;
+      letter-spacing: 0.06em;
+    }
+
+    .week-dates {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--sans);
+      font-size: 1rem;
+    }
+
+    .schedule-table th {
+      text-align: left;
+      padding: 8px 12px;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .schedule-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .schedule-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .schedule-table tbody tr:hover td {
+      background: var(--accent-light);
+    }
+
+    .schedule-table td:first-child {
+      font-weight: 500;
+      color: var(--muted);
+      width: 56px;
+    }
+
+    .bus-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      letter-spacing: 0.04em;
+      margin-right: 6px;
+    }
+
+    /* ── ROUTE VIEWER ── */
+    .route-block {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .dropdown-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    select {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      appearance: none;
+      cursor: pointer;
+      outline: none;
+      min-width: 160px;
+    }
+
+    select:focus {
+      border-color: var(--accent);
+    }
+
+    .select-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .route-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .route-table th {
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--sans);
+    }
+
+    .route-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+    }
+
+    .route-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .route-table tbody tr:hover td {
+      background: var(--accent-light);
+    }
+
+    .time-cell {
+      font-weight: 500;
+      color: var(--accent);
+      width: 56px;
+    }
+
+    .route-arrow {
+      color: var(--muted);
+      margin: 0 6px;
+      font-size: 0.7rem;
+    }
+
+    .placeholder {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 20px 12px;
+      border: 1px dashed var(--border);
+      text-align: center;
+    }
+
+    hr.divider {
+      max-width: 820px;
+      margin: 0 auto 40px;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Orare TMX</h1>
+    <span id="today-label"></span>
+  </header>
+
+  <!-- LINE SELECTOR -->
+  <div class="line-selector" id="line-selector"></div>
+
+  <!-- SECTION 1: Weekly allocation -->
+  <div class="week-block">
+    <div class="week-meta">
+      <span class="week-tag" id="week-tag"></span>
+      <span class="week-dates" id="week-dates"></span>
+    </div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Autobuz</th>
+        </tr>
+      </thead>
+      <tbody id="alloc-body"></tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 2: Route viewer -->
+  <div class="route-block">
+    <div class="dropdown-row">
+      <div class="select-wrap">
+        <select id="schedule-select" onchange="renderRoutes()">
+          <option value="">Selectează programul</option>
+        </select>
+      </div>
+    </div>
+    <div id="route-view">
+      <div class="placeholder">Selectează un program pentru a vedea cursele.</div>
+    </div>
+  </div>
+
+  <script>
+    // ════════════════════════════════════════════════════════════════════════════
+    // LINE DATA
+    // To add a new line: add an entry to LINES below following the same structure.
+    // ════════════════════════════════════════════════════════════════════════════
+
+    const LINES = {
+
+      // ── LINIA 1 ──────────────────────────────────────────────────────────────
+      // Replace the placeholder data below with real Line 1 allocations/schedules
+      '1': {
+        label: 'Linia 1',
+        weekCycle: 3,           // how many weeks before the cycle repeats
+        // Reference week: set the Monday date of a known week and its 1-based weekNum
+        referenceMonday: '2026-05-11',
+        referenceWeekNum: 1,    // update when you have real data
+        fixedSchedules: {
+          // '1A': 'BN 00 TMX', // uncomment and fill in if line 1 has a fixed schedule
+        },
+        allocations: [
+          // Week 1
+          { '1A': 'B 108 TMX', '1B': 'B 199 TMX', '1C': 'B 198 TMX', '1D': 'B 156 TMX', '1E': 'BN 75 TMX', '1F': 'BN 72 TMX' },
+
+          // Week 2
+          { '1A': 'B 198 TMX', '1B': 'B 108 TMX', '1C': 'B 199 TMX', '1D': 'BN 72 TMX', '1E': 'B 156 TMX', '1F': 'BN 75 TMX' },
+
+          // Week 3
+          { '1A': 'B 199 TMX', '1B': 'B 198 TMX', '1C': 'B 108 TMX', '1D': 'BN 75 TMX', '1E': 'BN 72 TMX', '1F': 'B 156 TMX' },
+        ],
+        schedules: {
+          // Fill in real Line 1 timetables here, same format as Line 2
+          '1A': [
+            { time: '06:10', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '06:40', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '07:07', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '07:35', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '08:05', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '08:36', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '10:06', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '10:36', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '11:06', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '11:36', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '12:06', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '12:36', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '13:06', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '13:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '14:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '14:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '15:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '15:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '16:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '16:35', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '17:06', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '17:36', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '18:06', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '18:36', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '19:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '19:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '20:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '20:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '21:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '21:20', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '21:40', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '22:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+          ],
+
+          '1B': [
+            { time: '05:45', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '06:10', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '06:40', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '07:05', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '07:20', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '07:45', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '08:15', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '08:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '09:18', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '09:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '11:18', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '11:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '12:18', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '12:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '13:18', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '13:45', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '14:20', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '14:50', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '15:20', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '15:50', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '16:15', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '16:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '17:18', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '17:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '18:20', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '18:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '19:15', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '19:45', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '20:15', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '20:45', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '21:20', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '21:40', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '22:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '22:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+          ],
+
+          '1C': [
+            { time: '05:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '06:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '06:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '07:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '07:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '08:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '08:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '09:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '09:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '10:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '10:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '11:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '12:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '13:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '13:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '14:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '14:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '15:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '15:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '16:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '16:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '17:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '17:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '18:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '18:35', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '19:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '19:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '20:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '20:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '21:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+          ],
+
+          '1D': [
+            { time: '06:20', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '06:48', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '07:15', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '07:40', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '08:12', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '08:42', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '09:12', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '09:42', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '10:12', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '10:42', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '11:12', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '11:42', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '12:12', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '14:10', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '14:40', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '15:10', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '15:40', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '16:42', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '17:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '17:42', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '18:12', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '18:48', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '19:15', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '19:45', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '20:15', from: 'Ștefan cel Mare', to: 'Moișan' },
+          ],
+
+          '1E': [
+            { time: '05:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '06:00', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '06:30', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '06:57', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '07:25', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '07:55', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '08:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '08:54', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '09:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '09:54', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '10:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '10:54', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '11:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '11:54', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '12:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '12:54', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '13:20', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '13:50', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '14:20', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '14:50', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '15:20', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '15:50', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '16:22', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '16:54', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '17:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '17:54', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '18:24', from: 'Ștefan cel Mare', to: 'Moișan' },
+          ],
+
+          '1F': [
+            { time: '06:20', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '06:50', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '07:25', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '07:55', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '09:06', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '09:36', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '10:18', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '10:48', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '11:30', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '12:00', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '12:42', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '13:10', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '13:40', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '14:10', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '14:40', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '15:10', from: 'Ștefan cel Mare', to: 'Moișan' },
+            { time: '15:40', from: 'Moișan', to: 'Ștefan cel Mare' },
+            { time: '16:10', from: 'Ștefan cel Mare', to: 'Moișan' },
+          ],
+        },
+      },
+
+      // ── LINIA 2 ──────────────────────────────────────────────────────────────
+      '2': {
+        label: 'Linia 2',
+        weekCycle: 7,
+        referenceMonday: '2026-05-11',
+        referenceWeekNum: 7,
+        fixedSchedules: {
+          '2A': 'BN 11 TMX',
+        },
+        allocations: [
+          { '2B': 'B 159 TMX', '2C': 'B 115 TMX', '2D': 'B 116 TMX', '2E': '118', '2F': 'B 197 TMX', '2G': 'B 107 TMX', '2H': 'BN 61 TMX' },
+          { '2B': 'B 107 TMX', '2C': 'BN 61 TMX', '2D': 'B 197 TMX', '2E': 'B 115 TMX', '2F': '118', '2G': 'B 159 TMX', '2H': 'B 116 TMX' },
+          { '2B': 'B 115 TMX', '2C': 'B 116 TMX', '2D': 'B 107 TMX', '2E': 'BN 61 TMX', '2F': 'B 159 TMX', '2G': '118', '2H': 'B 197 TMX' },
+          { '2B': 'BN 61 TMX', '2C': 'B 197 TMX', '2D': 'B 159 TMX', '2E': 'B 116 TMX', '2F': '118', '2G': 'B 115 TMX', '2H': 'B 107 TMX' },
+          { '2B': 'B 116 TMX', '2C': 'B 107 TMX', '2D': '118', '2E': 'B 197 TMX', '2F': 'B 115 TMX', '2G': 'BN 61 TMX', '2H': 'B 159 TMX' },
+          { '2B': 'B 197 TMX', '2C': 'B 159 TMX', '2D': 'B 115 TMX', '2E': 'B 107 TMX', '2F': 'BN 61 TMX', '2G': 'B 116 TMX', '2H': '118' },
+          { '2B': 'B 107 TMX', '2C': 'B 118 TMX', '2D': 'BN 61 TMX', '2E': 'B 159 TMX', '2F': 'B 116 TMX', '2G': 'B 197 TMX', '2H': 'B 115 TMX' },
+        ],
+        schedules: {
+          '2A': [
+            { time: '06:00', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '06:40', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '07:20', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '08:00', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '08:40', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '09:20', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '10:05', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '10:50', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '11:35', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '12:20', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '13:00', from: 'Viișoara', to: 'Unirea Depozit' },
+            { time: '13:40', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '14:26', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '15:00', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '15:46', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '16:20', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '17:11', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '17:45', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '18:41', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '19:15', from: 'Unirea Depozit', to: 'Moișan' },
+          ],
+          '2B': [
+            { time: '05:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '06:20', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '07:00', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '07:40', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '08:20', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '09:00', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '09:45', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '10:30', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '11:15', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '12:00', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '12:45', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '13:30', from: 'Casa Agronomului', to: 'Moișan' },
+            { time: '14:06', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '14:45', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '15:26', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '16:05', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '16:48', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '17:30', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '18:18', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '19:00', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '19:48', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '20:25', from: 'Unirea Depozit', to: 'Moișan' },
+          ],
+          '2C': [
+            { time: '05:30', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '06:20', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '07:00', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '07:40', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '08:20', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '09:00', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '09:45', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '10:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '11:15', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '12:00', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '12:45', from: 'Casa Agronomului', to: 'Moișan' },
+            { time: '13:23', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '14:00', from: 'Unirea Depozit', to: 'Viișoara' },
+            { time: '14:40', from: 'Viișoara', to: 'Unirea Depozit' },
+            { time: '15:25', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '16:06', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '16:45', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '17:33', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '18:15', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '19:03', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '19:45', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '20:30', from: 'Moișan', to: 'Unirea Depozit' },
+          ],
+          '2D': [
+            { time: '06:00', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '06:40', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '07:20', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '08:00', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '08:40', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '09:20', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '10:05', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '10:50', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '11:35', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '12:20', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '13:05', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '13:40', from: 'Viișoara', to: 'Unirea Depozit' },
+            { time: '14:20', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '15:06', from: 'Moișan', to: 'Casa Agronomului' },
+            { time: '15:40', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '16:20', from: 'Viișoara', to: 'Unirea Depozit' },
+            { time: '17:05', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '17:56', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '18:35', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '19:26', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '20:05', from: 'Unirea Depozit', to: 'Moișan' },
+          ],
+          '2E': [
+            { time: '06:50', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '07:30', from: 'Viișoara', to: 'Unirea Depozit' },
+            { time: '08:10', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '08:56', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '09:35', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '10:24', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '11:05', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '11:54', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '12:35', from: 'Unirea Depozit', to: 'Viișoara' },
+            { time: '13:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '14:10', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '14:50', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '15:30', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '16:10', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '16:55', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '17:40', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '18:25', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '19:10', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '19:55', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '20:40', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '21:20', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '22:00', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '22:30', from: 'Casa Agronomului', to: 'Viișoara' },
+          ],
+          '2F': [
+            { time: '06:30', from: 'Unirea Depozit', to: 'Viișoara' },
+            { time: '07:10', from: 'Viișoara', to: 'Unirea Depozit' },
+            { time: '07:50', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '08:36', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '09:10', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '10:01', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '10:40', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '11:31', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '12:10', from: 'Unirea Depozit', to: 'Viișoara' },
+            { time: '13:10', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '13:50', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '14:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '15:10', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '15:50', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '16:30', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '17:15', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '18:00', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '18:45', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '19:30', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '20:15', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '21:00', from: 'Casa Agronomului', to: 'Viișoara' },
+          ],
+          '2G': [
+            { time: '06:10', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '06:56', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '07:30', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '08:16', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '08:50', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '09:39', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '10:20', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '11:09', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '11:50', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '12:39', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '13:20', from: 'Unirea Depozit', to: 'Viișoara' },
+            { time: '14:10', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '14:50', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '15:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '16:10', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '16:55', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '17:40', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '18:25', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '19:10', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '19:55', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '20:40', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '21:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '22:00', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '22:30', from: 'Viișoara', to: 'Casa Agronomului' },
+          ],
+          '2H': [
+            { time: '06:36', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '07:10', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '07:56', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '08:30', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '09:16', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '09:55', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '10:46', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '11:25', from: 'Unirea Depozit', to: 'Moișan' },
+            { time: '12:16', from: 'Moișan', to: 'Unirea Depozit' },
+            { time: '12:55', from: 'Unirea Depozit', to: 'Viișoara' },
+            { time: '13:50', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '14:30', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '15:10', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '15:50', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '16:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '17:15', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '18:00', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '18:45', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '19:30', from: 'Viișoara', to: 'Casa Agronomului' },
+            { time: '20:15', from: 'Casa Agronomului', to: 'Viișoara' },
+            { time: '21:00', from: 'Viișoara', to: 'Casa Agronomului' },
+          ],
+        },
+      },
+
+    }; // end LINES
+
+
+    // ════════════════════════════════════════════════════════════════════════════
+    // STATE
+    // ════════════════════════════════════════════════════════════════════════════
+
+    let currentLine = '1'; // default to Line 2
+
+    // ── WEEK CALCULATION ────────────────────────────────────────────────────────
+
+    function getMondayOfWeek(d) {
+      const day = new Date(d);
+      const dow = day.getDay();
+      const diff = (dow === 0) ? -6 : 1 - dow;
+      day.setDate(day.getDate() + diff);
+      day.setHours(0, 0, 0, 0);
+      return day;
+    }
+
+    function getWeekIndex(lineKey) {
+      const line = LINES[lineKey];
+      const refMonday = getMondayOfWeek(new Date(line.referenceMonday + 'T00:00:00'));
+      const nowMonday = getMondayOfWeek(new Date());
+      const diffWeeks = Math.round((nowMonday - refMonday) / (7 * 24 * 3600 * 1000));
+      const refIdx = line.referenceWeekNum - 1; // 0-based
+      const cycle = line.weekCycle;
+      return ((refIdx + diffWeeks) % cycle + cycle) % cycle;
+    }
+
+    function formatDate(d) {
+      return d.toLocaleDateString('ro-RO', { day: 'numeric', month: 'short' });
+    }
+
+    // ── RENDER LINE BUTTONS ──────────────────────────────────────────────────────
+
+    function renderLineSelector() {
+      const container = document.getElementById('line-selector');
+      container.innerHTML = '';
+      Object.keys(LINES).forEach(key => {
+        const btn = document.createElement('button');
+        btn.className = 'line-btn' + (key === currentLine ? ' active' : '');
+        btn.textContent = LINES[key].label;
+        btn.onclick = () => selectLine(key);
+        container.appendChild(btn);
+      });
+    }
+
+    function selectLine(key) {
+      currentLine = key;
+      renderLineSelector();
+      renderAllocation();
+      // Reset schedule dropdown
+      const sel = document.getElementById('schedule-select');
+      sel.innerHTML = '<option value="">Selectează programul</option>';
+      const line = LINES[key];
+      const scheduleKeys = Object.keys(line.schedules);
+      scheduleKeys.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s;
+        sel.appendChild(opt);
+      });
+      document.getElementById('route-view').innerHTML =
+        '<div class="placeholder">Selectează un program pentru a vedea cursele.</div>';
+    }
+
+    // ── RENDER ALLOCATION ───────────────────────────────────────────────────────
+
+    function renderAllocation() {
+      const line = LINES[currentLine];
+      const idx = getWeekIndex(currentLine);
+      const alloc = line.allocations[idx];
+      const weekNum = idx + 1;
+
+      const now = new Date();
+      const monday = getMondayOfWeek(now);
+      const sunday = new Date(monday);
+      sunday.setDate(monday.getDate() + 6);
+
+      document.getElementById('week-tag').textContent = `Săptămâna ${weekNum}`;
+      document.getElementById('week-dates').textContent =
+        `${formatDate(monday)} – ${formatDate(sunday)}`;
+      document.getElementById('today-label').textContent =
+        now.toLocaleDateString('ro-RO', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+      const tbody = document.getElementById('alloc-body');
+      tbody.innerHTML = '';
+
+      // All schedule keys = fixed ones + rotating ones
+      const fixedKeys = Object.keys(line.fixedSchedules || {});
+      const rotatingKeys = Object.keys(alloc);
+      const allKeys = [...new Set([...fixedKeys, ...rotatingKeys])].sort();
+
+      allKeys.forEach(sch => {
+        const isFixed = fixedKeys.includes(sch);
+        const busNum = isFixed ? line.fixedSchedules[sch] : alloc[sch];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+      <td>${sch}</td>
+      <td><span class="bus-badge">${busNum || '—'}</span></td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ── RENDER ROUTES ────────────────────────────────────────────────────────────
+
+    function renderRoutes() {
+      const sel = document.getElementById('schedule-select').value;
+      const container = document.getElementById('route-view');
+      if (!sel) {
+        container.innerHTML = '<div class="placeholder">Selectează un program pentru a vedea cursele.</div>';
+        return;
+      }
+      const routes = LINES[currentLine].schedules[sel];
+      if (!routes || routes.length === 0) {
+        container.innerHTML = '<div class="placeholder">Nu există curse definite pentru acest program.</div>';
+        return;
+      }
+      let html = `<table class="route-table">
+    <thead><tr><th>Ora</th><th>Cursă</th></tr></thead><tbody>`;
+      routes.forEach(r => {
+        html += `<tr>
+      <td class="time-cell">${r.time}</td>
+      <td>${r.from}<span class="route-arrow">-</span>${r.to}</td>
+    </tr>`;
+      });
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    // ── INIT ─────────────────────────────────────────────────────────────────────
+
+    renderLineSelector();
+    selectLine(currentLine);
+  </script>
+</body>
+
+</html>
