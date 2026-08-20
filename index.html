@@ -291,6 +291,34 @@
       border: none;
       border-top: 1px solid var(--border);
     }
+
+    /* ── LIVE SCHEDULE INDICATORS ── */
+    .past-trip td {
+      color: var(--muted) !important;
+      opacity: 0.55;
+    }
+
+    .next-trip td {
+      background-color: var(--accent-light);
+      font-weight: 500;
+    }
+
+    .next-trip .time-cell {
+      color: var(--text);
+    }
+
+    .next-indicator {
+      display: inline-block;
+      margin-left: 8px;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      background: var(--text);
+      color: var(--bg);
+      padding: 2px 6px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
   </style>
 </head>
 
@@ -358,13 +386,13 @@
         },
         allocations: [
           // Week 1
-        { '1A': 'B 198 TMX', '1B': 'B 108 TMX', '1C': 'B 199 TMX', '1D': 'B 158 TMX', '1E': 'B 165 TMX', '1F': 'B 01 TMX' },
+          { '1A': 'B 198 TMX', '1B': 'B 108 TMX', '1C': 'B 199 TMX', '1D': 'B 158 TMX', '1E': 'B 165 TMX', '1F': 'B 01 TMX' },
 
-        // Week 2
-        { '1A': 'B 108 TMX', '1B': 'B 199 TMX', '1C': 'B 198 TMX', '1D': 'B 165 TMX', '1E': 'B 01 TMX', '1F': 'B 158 TMX' },
-        
-        // Week 3
-        { '1A': 'B 199 TMX', '1B': 'B 198 TMX', '1C': 'B 108 TMX', '1D': 'B 01 TMX', '1E': 'B 158 TMX', '1F': 'B 165 TMX' },
+          // Week 2
+          { '1A': 'B 108 TMX', '1B': 'B 199 TMX', '1C': 'B 198 TMX', '1D': 'B 165 TMX', '1E': 'B 01 TMX', '1F': 'B 158 TMX' },
+
+          // Week 3
+          { '1A': 'B 199 TMX', '1B': 'B 198 TMX', '1C': 'B 108 TMX', '1D': 'B 01 TMX', '1E': 'B 158 TMX', '1F': 'B 165 TMX' },
         ],
         schedules: {
           // Fill in real Line 1 timetables here, same format as Line 2
@@ -551,6 +579,73 @@
             { time: '15:40', from: 'Moișan', to: 'Ștefan cel Mare' },
             { time: '16:10', from: 'Ștefan cel Mare', to: 'Moișan' },
           ],
+        },
+      },
+
+      '1A': {
+        label: 'Linia 1A',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+          '1A-A': 'B 196 TMX',
+        },
+        allocations: [
+          { '1A-A': 'B 196 TMX' }
+        ],
+        schedules: {
+          '1A-A': [
+            { time: '06:15', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '07:30', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '07:40', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '08:30', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '08:40', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '09:30', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '09:40', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '12:00', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '12:30', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '12:40', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '17:10', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '17:20', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '17:40', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '17:50', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '18:00', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '18:10', from: 'Ghinda', to: 'Ștefan cel Mare' },
+            { time: '18:20', from: 'Ștefan cel Mare', to: 'Ghinda' },
+            { time: '18:30', from: 'Ghinda', to: 'Ștefan cel Mare' },
+
+          ],
+        },
+      },
+
+      '1B': {
+        label: 'Linia 1B',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+          '1B-A': 'B 196 TMX',
+        },
+        allocations: [
+          { '1B-A': 'B 196 TMX' }
+        ],
+        schedules: {
+          '1B-A': [
+            { time: '07:15', from: 'Ștefan cel Mare', to: 'Valea Jelnei' },
+            { time: '07:25', from: 'Valea Jelnei', to: 'Ștefan cel Mare' },
+            { time: '08:00', from: 'Ștefan cel Mare', to: 'Valea Jelnei' },
+            { time: '08:10', from: 'Valea Jelnei', to: 'Ștefan cel Mare' },
+            { time: '09:00', from: 'Ștefan cel Mare', to: 'Valea Jelnei' },
+            { time: '09:10', from: 'Valea Jelnei', to: 'Ștefan cel Mare' },
+            { time: '13:15', from: 'Ștefan cel Mare', to: 'Valea Jelnei' },
+            { time: '13:25', from: 'Valea Jelnei', to: 'Ștefan cel Mare' },
+            { time: '14:15', from: 'Ștefan cel Mare', to: 'Valea Jelnei' },
+            { time: '14:25', from: 'Valea Jelnei', to: 'Ștefan cel Mare' },
+            { time: '15:15', from: 'Ștefan cel Mare', to: 'Valea Jelnei' },
+            { time: '15:25', from: 'Valea Jelnei', to: 'Ștefan cel Mare' },
+            { time: '16:15', from: 'Ștefan cel Mare', to: 'Valea Jelnei' },
+            { time: '16:25', from: 'Valea Jelnei', to: 'Ștefan cel Mare' },
+          ]
         },
       },
 
@@ -766,8 +861,992 @@
         },
       },
 
-    }; // end LINES
+      // ── LINIA 2 ──────────────────────────────────────────────────────────────
+      '3': {
+        label: 'Linia 3',
+        weekCycle: 3,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 7,
+        fixedSchedules: {
 
+        },
+        allocations: [
+          { '3A': 'B 157 TMX', '3B': 'BN 79 TMX', '3C': 'BN 38 TMX', '3D': 'BN 44 TMX', '3E': 'BN 76 TMX', '3F': 'BN 14 TMX' },
+          { '3A': '-', '3B': '-', '3C': '-', '3D': '-', '3E': '-', '3F': '-' },
+          { '3A': '-', '3B': '-', '3C': '-', '3D': '-', '3E': '-', '3F': '-' },
+        ],
+        schedules: {
+          '3A': [
+            { time: '06:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '06:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '07:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '07:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '08:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '08:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '09:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '09:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '10:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '11:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '12:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '12:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '13:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '13:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '14:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '14:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '15:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '15:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '16:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '16:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '17:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '17:36', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '18:06', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '18:36', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '19:06', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '19:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '19:55', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '20:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '21:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '21:20', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '21:40', from: 'C.R. Vivu', to: 'Poligonului' },
+          ],
+
+          '3B': [
+            { time: '06:20', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '06:50', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '07:20', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '07:50', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '08:20', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '08:50', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '09:18', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '09:48', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '10:18', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '10:48', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '11:18', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '11:48', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '12:18', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '12:48', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '13:18', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '13:48', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '14:20', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '14:50', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '15:20', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '15:50', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '16:20', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '16:50', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '17:24', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '17:42', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '18:24', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '18:42', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '18:54', from: 'C.R. Vivu', to: 'Poligonului' },
+          ],
+
+          '3C': [
+            { time: '06:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '06:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '07:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '07:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '08:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '08:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '09:06', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '09:36', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '10:06', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '10:36', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '11:06', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '11:36', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '12:06', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '12:36', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '13:06', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '13:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '14:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '14:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '15:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '15:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '16:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '16:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '18:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '18:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '19:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '19:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '20:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '20:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '21:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '21:20', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '21:40', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '22:00', from: 'C.R. Vivu', to: 'Poligonului' },
+          ],
+
+          '3D': [
+            { time: '05:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '06:10', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '06:40', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '07:10', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '07:40', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '08:10', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '08:42', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '09:12', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '09:42', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '10:12', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '10:42', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '11:12', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '12:42', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '13:12', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '13:42', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '14:10', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '14:40', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '15:10', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '15:40', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '16:10', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '16:40', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '17:10', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '17:48', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '18:18', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '18:48', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '19:18', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '19:45', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '20:15', from: 'C.R. Vivu', to: 'Poligonului' },
+          ],
+
+          '3E': [
+            { time: '06:20', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '06:50', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '07:20', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '07:50', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '08:20', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '08:54', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '09:24', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '09:54', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '10:24', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '10:54', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '11:24', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '11:54', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '12:24', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '14:10', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '14:40', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '15:10', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '15:40', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '16:10', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '16:40', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '17:12', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '17:40', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '18:12', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '18:42', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '19:15', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '19:42', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '20:15', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '20:45', from: 'C.R. Vivu', to: 'Poligonului' },
+          ],
+
+          '3F': [
+            { time: '05:30', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '06:10', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '06:40', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '07:10', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '07:40', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '08:10', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '08:40', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '10:30', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '11:00', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '11:42', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '12:12', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '12:54', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '13:24', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '13:52', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '14:20', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '14:50', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '15:20', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '15:50', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '16:20', from: 'C.R. Vivu', to: 'Poligonului' },
+            { time: '17:00', from: 'Poligonului', to: 'C.R. Vivu' },
+            { time: '17:25', from: 'C.R. Vivu', to: 'Poligonului' },
+          ]
+        },
+      },
+
+      '5': {
+        label: 'Linia 5',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '5A': 'depinde de zi', '5B': 'depinde de zi' }
+        ],
+        schedules: {
+          '5A': [
+            { time: '06:20', from: 'C. R. Vivu', to: 'Rombat' },
+            { time: '07:10', from: 'Rombat', to: 'C. R. Vivu' },
+            { time: '14:20', from: 'C. R. Vivu', to: 'Rombat via Tărpiului' },
+            { time: '15:05', from: 'Rombat', to: 'C. R. Vivu via Industriei' },
+            { time: '15:40', from: 'Rombat', to: 'C. R. Vivu' },
+          ],
+          '5B': [
+            { time: '06:25', from: 'C. R. Vivu', to: 'Rombat' },
+            { time: '14:25', from: 'C. R. Vivu', to: 'Rombat via Industriei' },
+            { time: '15:10', from: 'Rombat', to: 'C. R. Vivu via Tărpiului' },
+            { time: '22:20', from: 'C. R. Vivu', to: 'Rombat' },
+            { time: '23:05', from: 'Rombat', to: 'C. R. Vivu' },
+          ]
+        },
+      },
+
+      '6': {
+        label: 'Linia 6',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '6A': 'BN 20 TMX', '6B': 'B 164 TMX', '6C': 'BN 59 TMX', '6D': 'BN 62 TMX' }
+        ],
+        schedules: {
+          '6A': [
+            { time: '06:20', from: 'Dispecerat', to: 'Tărpiului' },
+            { time: '07:05', from: 'Tărpiului', to: 'Dispecerat' },
+            { time: '14:20', from: 'Dispecerat', to: 'Tărpiului' },
+            { time: '15:05', from: 'Tărpiului', to: 'Dispecerat' },
+            { time: '15:40', from: 'Rombat', to: 'Dispecerat' },
+            { time: '16:30', from: 'Tărpiului', to: 'Dispecerat via Industriei' },
+            { time: '22:20', from: 'Dispecerat', to: 'Tărpiului', days: [5] },
+            { time: '23:05', from: 'Tărpiului', to: 'Dispecerat', days: [5] },
+          ],
+          '6B': [
+            { time: '07:00', from: 'Dispecerat', to: 'Tărpiului' },
+          ],
+          '6C': [
+            { time: '22:20', from: 'Dispecerat', to: 'Tărpiului', days: [1, 3] },
+            { time: '23:05', from: 'Tărpiului', to: 'Dispecerat', days: [1, 3] },
+          ],
+          '6D': [
+            { time: '22:20', from: 'Dispecerat', to: 'Tărpiului', days: [2, 4] },
+            { time: '23:05', from: 'Tărpiului', to: 'Dispecerat', days: [2, 4] },
+          ]
+
+        },
+      },
+
+      '7': {
+        label: 'Linia 7',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '7A': 'BN 04 TMX' }
+        ],
+        schedules: {
+          '7A': [
+            { time: '05:30', from: 'Dispecerat', to: 'Slătinița' },
+            { time: '05:50', from: 'Slătinița', to: 'Dispecerat' },
+            { time: '06:20', from: 'Dispecerat', to: 'Slătinița' },
+            { time: '06:45', from: 'Slătinița', to: 'Dispecerat' },
+            { time: '07:20', from: 'Dispecerat', to: 'Slătinița' },
+            { time: '08:10', from: 'Slătinița', to: 'Dispecerat' },
+            { time: '12:15', from: 'Dispecerat', to: 'Slătinița' },
+            { time: '13:00', from: 'Slătinița', to: 'Dispecerat' },
+            { time: '14:30', from: 'Dispecerat', to: 'Slătinița' },
+            { time: '15:00', from: 'Slătinița', to: 'Dispecerat' },
+            { time: '16:00', from: 'Dispecerat', to: 'Slătinița' },
+            { time: '16:45', from: 'Slătinița', to: 'Dispecerat' },
+            { time: '19:30', from: 'Dispecerat', to: 'Slătinița' },
+            { time: '20:00', from: 'Slătinița', to: 'Dispecerat' },
+          ]
+        },
+      },
+
+      '8': {
+        label: 'Linia 8',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '8A': 'BN 42 TMX', '8B': 'BN 57 TMX' }
+        ],
+        schedules: {
+          '8A': [
+            { time: '06:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '07:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '07:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '08:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '08:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '09:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '09:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '10:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '10:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '11:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '12:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '13:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '13:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '14:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '14:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '14:55', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '16:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '17:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '17:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '18:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '18:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '19:00', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '19:30', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '19:55', from: 'Sigmir', to: 'Dispecerat' },
+          ],
+
+          '8B': [
+            { time: '06:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '07:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '07:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '08:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '08:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '09:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '09:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '10:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '10:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '12:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '12:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '13:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '13:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '14:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '14:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '15:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '15:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '16:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '16:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '17:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '17:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '18:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '18:30', from: 'Sigmir', to: 'Dispecerat' },
+            { time: '19:00', from: 'Dispecerat', to: 'Sigmir' },
+            { time: '19:30', from: 'Sigmir', to: 'Dispecerat' },
+          ],
+        },
+      },
+
+      '9': {
+        label: 'Linia 9',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '9A': 'BN 70 TMX', '9B': 'B 196 TMX' }
+        ],
+        schedules: {
+          '9A': [
+            { time: '05:45', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '06:10', from: 'Ghinda', to: 'Dispecerat' },
+            { time: '06:45', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '07:10', from: 'Ghinda', to: 'Dispecerat' },
+            { time: '07:45', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '08:20', from: 'Ghinda', to: 'Dispecerat' },
+            { time: '13:20', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '13:55', from: 'Ghinda', to: 'Dispecerat' },
+            { time: '14:20', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '15:00', from: 'Ghinda', to: 'Dispecerat' },
+            { time: '16:10', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '16:55', from: 'Ghinda', to: 'Dispecerat' },
+          ],
+
+          '9B': [
+            { time: '11:00', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '11:30', from: 'Ghinda', to: 'Dispecerat' },
+            { time: '19:30', from: 'Dispecerat', to: 'Ghinda' },
+            { time: '19:50', from: 'Ghinda', to: 'Dispecerat' },
+          ],
+        },
+      },
+
+      '10': {
+        label: 'Linia 10',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '10A': 'BN 10 TMX', '10B': 'B 192 TMX' }
+        ],
+        schedules: {
+          '10A': [
+            { time: '06:00', from: 'Sărata', to: 'Dispecerat' },
+            { time: '06:30', from: 'Dispecerat', to: 'Sărata' },
+            { time: '07:00', from: 'Sărata', to: 'Dispecerat' },
+            { time: '07:35', from: 'Dispecerat', to: 'Sărata' },
+            { time: '08:10', from: 'Sărata', to: 'Dispecerat' },
+            { time: '08:40', from: 'Dispecerat', to: 'Sărata' },
+            { time: '10:00', from: 'Dispecerat', to: 'Sărata' },
+            { time: '10:30', from: 'Sărata', to: 'Dispecerat' },
+            { time: '12:15', from: 'Dispecerat', to: 'Sărata' },
+            { time: '12:45', from: 'Sărata', to: 'Dispecerat' },
+            { time: '13:20', from: 'Dispecerat', to: 'Sărata' },
+            { time: '13:50', from: 'Sărata', to: 'Dispecerat' },
+            { time: '14:25', from: 'Dispecerat', to: 'Sărata' },
+            { time: '14:55', from: 'Sărata', to: 'Dispecerat' },
+            { time: '15:30', from: 'Dispecerat', to: 'Sărata' },
+            { time: '16:00', from: 'Sărata', to: 'Dispecerat' },
+            { time: '16:40', from: 'Dispecerat', to: 'Sărata' },
+            { time: '17:15', from: 'Sărata', to: 'Dispecerat' },
+            { time: '17:50', from: 'Dispecerat', to: 'Sărata' },
+            { time: '18:25', from: 'Sărata', to: 'Dispecerat' },
+            { time: '18:45', from: 'Dispecerat', to: 'Sărata' },
+          ],
+
+          '10B': [
+            { time: '19:30', from: 'Dispecerat', to: 'Sărata' },
+            { time: '20:00', from: 'Sărata', to: 'Dispecerat' },
+          ],
+        },
+      },
+
+      '11': {
+        label: 'Linia 11',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '11A': 'BN 37 TMX', '11B': 'BN 95 TMX' }
+        ],
+        schedules: {
+          '11A': [
+            { time: '06:10', from: 'C. R. Vivu', to: 'Leoni' },
+            { time: '07:10', from: 'Leoni', to: 'C. R. Vivu' },
+            { time: '14:30', from: 'C. R. Vivu', to: 'Leoni' },
+            { time: '15:30', from: 'Leoni', to: 'C. R. Vivu' },
+          ],
+
+          '11B': [
+            { time: '16:30', from: 'Leoni', to: 'C. R. Vivu' },
+          ],
+        },
+      },
+
+      '11A': {
+        label: 'Linia 11A',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '11A-A': 'B 164 TMX' }
+        ],
+        schedules: {
+          '11A-A': [
+            { time: '07:15', from: 'Valea Căstăilor', to: 'Infoel' },
+          ]
+        },
+      },
+
+      '11B': {
+        label: 'Linia 11B',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '11B-A': 'BN 95 TMX' }
+        ],
+        schedules: {
+          '11B-A': [
+            { time: '06:10', from: 'Ghinda', to: 'Leoni' },
+            { time: '07:10', from: 'Leoni', to: 'Ghinda' },
+            { time: '14:20', from: 'Ghinda', to: 'Leoni' },
+            { time: '15:30', from: 'Leoni', to: 'Ghinda' },
+            { time: '22:30', from: 'Ghinda', to: 'Leoni' },
+            { time: '23:45', from: 'Leoni', to: 'Ghinda' },
+          ],
+        },
+      },
+      '12': {
+        label: 'Linia 12',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '12A': 'BN 53 TMX', '12B': 'BN 42 TMX' }
+        ],
+        schedules: {
+          '12A': [
+            { time: '06:10', from: 'Viișoara - Dispecerat', to: 'Leoni' },
+            { time: '07:10', from: 'Leoni', to: 'Dispecerat' },
+            { time: '07:30', from: 'Dispecerat', to: 'Leoni' },
+            { time: '14:20', from: 'Dispecerat', to: 'Leoni' },
+            { time: '15:30', from: 'Leoni - Dispecerat', to: 'Viișoara' },
+            { time: '16:30', from: 'Leoni', to: 'Dispecerat' },
+            { time: '22:55', from: 'Dispecerat', to: 'Leoni' },
+            { time: '23:45', from: 'Leoni', to: 'Dispecerat' },
+          ],
+
+          '12B': [
+            { time: '06:20', from: 'Dispecerat', to: 'Leoni' }
+          ],
+        },
+      },
+
+      '12B': {
+        label: 'Linia 12B',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '12B-A': 'BN 53 TMX' }
+        ],
+        schedules: {
+          '12B-A': [
+            { time: '06:10', from: 'Viișoara - Dispecerat', to: 'Leoni' },
+            { time: '07:10', from: 'Leoni', to: 'Dispecerat' },
+            { time: '07:30', from: 'Dispecerat', to: 'Leoni' },
+            { time: '14:20', from: 'Dispecerat', to: 'Leoni' },
+            { time: '15:30', from: 'Leoni - Dispecerat', to: 'Viișoara' },
+            { time: '16:30', from: 'Leoni', to: 'Dispecerat' },
+            { time: '22:55', from: 'Dispecerat', to: 'Leoni' },
+            { time: '23:45', from: 'Leoni', to: 'Dispecerat' },
+          ],
+
+          '12B-A': [
+            { time: '06:10', from: 'Viișoara - Dispecerat', to: 'Leoni' },
+            { time: '15:30', from: 'Leoni - Dispecerat', to: 'Viișoara' },
+          ],
+        },
+      },
+
+      '13': {
+        label: 'Linia 13',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '13A': 'BN 62 TMX', '13B': 'BN 59 TMX', '13C': 'BN 21 TNR', '13D': 'BN 74 TMX', '13E': 'BN 04 TMX', '13F': 'BN 70 TMX' }
+        ],
+        schedules: {
+          '13A': [
+            { time: '06:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '06:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '07:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '07:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '08:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '08:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '09:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '09:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '10:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '10:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '11:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '11:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '13:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '13:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '14:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '14:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '15:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '15:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '16:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '16:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '17:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '17:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '18:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '18:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '19:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '19:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '20:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '20:30', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '21:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '21:30', from: 'Subcetate ANL', to: 'Odobescu' },
+          ],
+
+          '13B': [
+            { time: '06:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '06:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '07:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '07:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '08:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '08:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '09:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '09:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '10:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '10:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '12:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '12:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '13:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '13:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '14:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '14:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '15:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '15:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '16:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '16:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '17:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '17:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '18:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '18:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '19:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '19:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '20:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '20:30', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '21:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '21:30', from: 'Odobescu', to: 'Subcetate ANL' },
+          ],
+
+          '13C': [
+            { time: '06:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '06:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '07:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '07:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '08:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '08:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '09:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '09:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '10:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '10:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '11:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '11:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '12:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '12:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '13:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '13:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '14:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '14:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '15:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '15:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '16:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '16:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '17:15', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '17:45', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '18:15', from: 'Subcetate ANL', to: 'Odobescu' },
+          ],
+
+          '13D': [
+            { time: '06:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '06:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '07:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '07:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '08:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '08:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '11:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '11:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '12:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '12:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '13:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '13:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '14:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '14:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '15:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '15:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '16:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '16:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '17:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '17:45', from: 'Subcetate ANL', to: 'Odobescu' },
+          ],
+
+          '13E': [
+            { time: '09:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '09:45', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '10:15', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '11:00', from: 'Subcetate ANL', to: 'Odobescu' },
+            { time: '11:30', from: 'Odobescu', to: 'Subcetate ANL' },
+          ],
+
+          '13F': [
+            { time: '12:00', from: 'Odobescu', to: 'Subcetate ANL' },
+            { time: '12:30', from: 'Subcetate ANL', to: 'Odobescu' },
+          ],
+        },
+      },
+
+      '13A': {
+        label: 'Linia 13A',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '13A-A': 'B 191 TMX', '13A-B': 'B 192 TMX' }
+        ],
+        schedules: {
+          '13A-A': [
+            { time: '06:00', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '06:15', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '06:30', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '06:45', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '07:00', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '07:15', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '07:30', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '07:45', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '08:00', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '08:15', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '08:30', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '08:45', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '09:00', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '09:22', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '09:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '10:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '10:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '10:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '13:15', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '13:30', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '13:45', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '14:00', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '14:15', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '14:30', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '14:45', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '15:00', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '15:15', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '15:30', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '15:45', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '16:00', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '16:15', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '16:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '16:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '16:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '17:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '17:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '17:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '17:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '18:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '18:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '18:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '18:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '19:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '19:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '19:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '19:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '20:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '20:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '20:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '20:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '21:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '21:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '21:30', from: 'Cartier RAAL', to: 'Gării' },
+          ],
+
+          '13A-B': [
+            { time: '06:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '06:15', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '06:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '06:45', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '07:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '07:15', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '07:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '07:45', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '08:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '08:15', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '08:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '08:45', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '09:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '10:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '11:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '11:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '11:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '11:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '12:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '12:22', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '12:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '12:52', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '13:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '13:15', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '13:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '13:45', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '14:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '14:15', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '14:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '14:45', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '15:00', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '15:15', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '15:30', from: 'Cartier RAAL', to: 'Gării' },
+            { time: '15:45', from: 'Gării', to: 'Cartier RAAL' },
+            { time: '16:00', from: 'Cartier RAAL', to: 'Gării' },
+          ],
+        },
+      },
+
+      '14': {
+        label: 'Linia 14',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '14A': 'B 193 TMX', '14B': 'B 164 TMX' }
+        ],
+        schedules: {
+          '14A': [
+            { time: '06:20', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '06:35', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '06:50', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '07:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '08:00', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '08:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '09:00', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '09:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '10:00', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '10:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '12:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '12:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '13:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '13:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '14:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '14:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '15:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '15:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '16:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '16:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '17:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '17:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '18:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '18:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+            { time: '19:10', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '19:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+          ],
+
+          '14B': [
+            { time: '11:00', from: 'Dispecerat', to: 'Lucian Blaga' },
+            { time: '11:30', from: 'Lucian Blaga', to: 'Dispecerat' },
+          ],
+        },
+      },
+
+      '16': {
+        label: 'Linia 16',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '16A': 'B 194 TMX', '16B': 'B 195 TMX', '16C': 'B 164 TMX' }
+        ],
+        schedules: {
+          '16A': [
+            { time: '07:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '08:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '08:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '09:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '09:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '11:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '11:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '12:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '12:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '13:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '13:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '14:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '14:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '15:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '15:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '16:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '16:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '17:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '17:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '18:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '18:30', from: 'Aerodromului', to: 'Spital' },
+            { time: '19:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '19:30', from: 'Aerodromului', to: 'Spital' },
+          ],
+
+          '16B': [
+            { time: '07:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '07:15', from: 'Spital', to: 'Aerodromului' },
+            { time: '08:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '08:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '09:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '09:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '10:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '10:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '11:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '11:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '12:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '12:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '13:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '13:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '14:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '14:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '15:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '15:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '16:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '16:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '17:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '17:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '18:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '18:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '19:00', from: 'Aerodromului', to: 'Spital' },
+            { time: '19:30', from: 'Spital', to: 'Aerodromului' },
+            { time: '20:00', from: 'Aerodromului', to: 'Spital' },
+          ],
+          '16C': [
+            { time: '10:00', from: 'Spital', to: 'Aerodromului' },
+            { time: '10:30', from: 'Aerodromului', to: 'Spital' },
+          ],
+        },
+      },
+
+      '18': {
+        label: 'Linia 18',
+        weekCycle: 1,
+        referenceMonday: '2026-08-17',
+        referenceWeekNum: 1,
+        fixedSchedules: {
+        },
+        allocations: [
+          { '18A': 'BN 54 TMX', '18B': 'B 164 TMX', '18C': 'BN 70 TMX' }
+        ],
+        schedules: {
+          '18A': [
+            { time: '07:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '08:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '08:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '10:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '10:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '11:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '11:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '12:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '12:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '13:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '13:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '14:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '14:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '15:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '15:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '16:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '16:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '17:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '17:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '18:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '18:30', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '19:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '19:30', from: 'Heidenfeld', to: 'Dispecerat' },
+          ],
+
+          '18B': [
+            { time: '08:00', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '08:30', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '09:00', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '13:30', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '14:00', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '14:30', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '15:00', from: 'Heidenfeld', to: 'Dispecerat' },
+            { time: '15:30', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '16:00', from: 'Heidenfeld', to: 'Dispecerat' },
+          ],
+          '18C': [
+            { time: '09:00', from: 'Dispecerat', to: 'Heidenfeld' },
+            { time: '09:30', from: 'Heidenfeld', to: 'Dispecerat' },
+          ],
+        },
+      },
+
+
+    };
 
     // ════════════════════════════════════════════════════════════════════════════
     // STATE
@@ -802,16 +1881,61 @@
 
     // ── RENDER LINE BUTTONS ──────────────────────────────────────────────────────
 
+    function sortLineKeys(a, b) {
+      const parse = key => {
+        // Supports:
+        // 1
+        // 1A
+        // 1B
+        // 13A-A
+        // 13A-B
+        const match = key.match(/^(\d+)(.*)$/);
+
+        if (!match) {
+          return {
+            number: Infinity,
+            suffix: key.toLowerCase()
+          };
+        }
+
+        return {
+          number: Number(match[1]),
+          suffix: match[2].toLowerCase()
+        };
+      };
+
+      const A = parse(a);
+      const B = parse(b);
+
+      // Numeric part first: 1, 2, 3, ..., 10, 11, 12...
+      if (A.number !== B.number) {
+        return A.number - B.number;
+      }
+
+      // For the same number:
+      // 1 before 1A before 1B
+      if (A.suffix === '' && B.suffix !== '') return -1;
+      if (A.suffix !== '' && B.suffix === '') return 1;
+
+      return A.suffix.localeCompare(B.suffix, undefined, {
+        numeric: true,
+        sensitivity: 'base'
+      });
+    }
+
     function renderLineSelector() {
       const container = document.getElementById('line-selector');
       container.innerHTML = '';
-      Object.keys(LINES).forEach(key => {
-        const btn = document.createElement('button');
-        btn.className = 'line-btn' + (key === currentLine ? ' active' : '');
-        btn.textContent = LINES[key].label;
-        btn.onclick = () => selectLine(key);
-        container.appendChild(btn);
-      });
+
+      Object.keys(LINES)
+        .sort(sortLineKeys)
+        .forEach(key => {
+          const btn = document.createElement('button');
+          btn.className = 'line-btn' + (key === currentLine ? ' active' : '');
+          btn.textContent = LINES[key].label;
+          btn.onclick = () => selectLine(key);
+          container.appendChild(btn);
+        });
     }
 
     function selectLine(key) {
@@ -835,6 +1959,38 @@
 
     // ── RENDER ALLOCATION ───────────────────────────────────────────────────────
 
+    // ── RENDER ALLOCATION ────────────────────────────────────────────────────────
+
+    function sortRouteKeys(a, b) {
+      const parse = key => {
+        const match = key.match(/^(\d+)([A-Za-z]*)$/);
+
+        if (!match) {
+          return {
+            number: Infinity,
+            suffix: key.toLowerCase()
+          };
+        }
+
+        return {
+          number: Number(match[1]),
+          suffix: match[2].toLowerCase()
+        };
+      };
+
+      const A = parse(a);
+      const B = parse(b);
+
+      if (A.number !== B.number) {
+        return A.number - B.number;
+      }
+
+      if (A.suffix === '' && B.suffix !== '') return -1;
+      if (A.suffix !== '' && B.suffix === '') return 1;
+
+      return A.suffix.localeCompare(B.suffix);
+    }
+
     function renderAllocation() {
       const line = LINES[currentLine];
       const idx = getWeekIndex(currentLine);
@@ -850,49 +2006,111 @@
       document.getElementById('week-dates').textContent =
         `${formatDate(monday)} – ${formatDate(sunday)}`;
       document.getElementById('today-label').textContent =
-        now.toLocaleDateString('ro-RO', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        now.toLocaleDateString('ro-RO', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
 
       const tbody = document.getElementById('alloc-body');
       tbody.innerHTML = '';
 
-      // All schedule keys = fixed ones + rotating ones
       const fixedKeys = Object.keys(line.fixedSchedules || {});
       const rotatingKeys = Object.keys(alloc);
-      const allKeys = [...new Set([...fixedKeys, ...rotatingKeys])].sort();
+
+      const allKeys = [
+        ...new Set([...fixedKeys, ...rotatingKeys])
+      ].sort(sortRouteKeys);
 
       allKeys.forEach(sch => {
         const isFixed = fixedKeys.includes(sch);
         const busNum = isFixed ? line.fixedSchedules[sch] : alloc[sch];
+
         const tr = document.createElement('tr');
+
         tr.innerHTML = `
       <td>${sch}</td>
-      <td><span class="bus-badge">${busNum || '—'}</span></td>`;
+      <td><span class="bus-badge">${busNum || '—'}</span></td>
+    `;
+
         tbody.appendChild(tr);
       });
     }
 
     // ── RENDER ROUTES ────────────────────────────────────────────────────────────
 
+    // Helper to convert "HH:MM" into total minutes from midnight
+    function timeToMinutes(timeStr) {
+      const [hours, minutes] = timeStr.split(':').map(Number);
+      return hours * 60 + minutes;
+    }
+
     function renderRoutes() {
       const sel = document.getElementById('schedule-select').value;
       const container = document.getElementById('route-view');
+
       if (!sel) {
         container.innerHTML = '<div class="placeholder">Selectează un program pentru a vedea cursele.</div>';
         return;
       }
-      const routes = LINES[currentLine].schedules[sel];
-      if (!routes || routes.length === 0) {
+
+      const allRoutes = LINES[currentLine].schedules[sel];
+      if (!allRoutes || allRoutes.length === 0) {
         container.innerHTML = '<div class="placeholder">Nu există curse definite pentru acest program.</div>';
         return;
       }
+
+      // Get current system day and time
+      const now = new Date();
+      const currentDay = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+      // Filter routes to only include those running today
+      // If a trip has no 'days' array specified, it runs every day.
+      const routes = allRoutes.filter(r => {
+        if (!r.days) return true;
+        return r.days.includes(currentDay);
+      });
+
+      if (routes.length === 0) {
+        container.innerHTML = '<div class="placeholder">Nu există curse programate pentru astăzi pe acest traseu.</div>';
+        return;
+      }
+
+      // Find the index of the next upcoming trip for today
+      let nextIndex = -1;
+      for (let i = 0; i < routes.length; i++) {
+        if (timeToMinutes(routes[i].time) >= currentMinutes) {
+          nextIndex = i;
+          break;
+        }
+      }
+
       let html = `<table class="route-table">
     <thead><tr><th>Ora</th><th>Cursă</th></tr></thead><tbody>`;
-      routes.forEach(r => {
-        html += `<tr>
+
+      routes.forEach((r, idx) => {
+        let rowClass = '';
+        let indicator = '';
+
+        if (nextIndex !== -1) {
+          if (idx < nextIndex) {
+            rowClass = 'past-trip';
+          } else if (idx === nextIndex) {
+            rowClass = 'next-trip';
+            indicator = '<span class="next-indicator">Urmează ➔</span>';
+          }
+        } else {
+          rowClass = 'past-trip';
+        }
+
+        html += `<tr class="${rowClass}">
       <td class="time-cell">${r.time}</td>
-      <td>${r.from}<span class="route-arrow">-</span>${r.to}</td>
+      <td>${r.from}<span class="route-arrow">-</span>${r.to} ${indicator}</td>
     </tr>`;
       });
+
       html += '</tbody></table>';
       container.innerHTML = html;
     }
